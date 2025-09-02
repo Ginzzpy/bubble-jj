@@ -2,7 +2,7 @@
 @section('title', 'Page 1')
 
 @section('styles')
-    <style>
+    <style data-partial="1">
         #text {
             color: red;
         }
@@ -14,7 +14,7 @@
 @endsection
 
 @section('scripts')
-    <script>
+    <script data-partial="1">
         $("#text").text("Tes Halaman 1");
     </script>
 @endsection
