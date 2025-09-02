@@ -1,44 +1,45 @@
-<div class="row">
-    <div class="col-md-6 mx-auto">
-        <form id="form-login" action="{{ route('user.login') }}" method="POST">
-            @csrf
-            @method('POST')
+@extends('layouts.auth.index')
+@section('title', 'Login')
 
-            <div class="card">
-                <div class="card-header pb-0 mb-0">
-                    <h1 class="fw-bold">Selamat Datang!</h1>
-                    <p>Silahkan login! Jika belum memiliki akun maka akan dibuatkan otomatis.</p>
-                </div>
+@section('content')
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <form id="form-login" action="{{ route('user.login') }}" method="POST">
+                @csrf
+                @method('POST')
 
-                <div class="card-body">
-                    <div class="mb-3">
-                        <label for="username" class="form-label">Username Tiktok</label>
-                        <input type="text" class="form-control" id="username" name="username" placeholder="Masukkan username tiktok kamu"
-                            value="{{ old('username') }}">
+                <div class="card">
+                    <div class="card-header pb-0 mb-0">
+                        <h1 class="fw-bold">Selamat Datang!</h1>
+                        <p>Silahkan login! Jika belum memiliki akun maka akan dibuatkan otomatis.</p>
                     </div>
-                    <div class="mb-3">
-                        <label for="no_telp" class="form-label">Nomor Whatsapp</label>
-                        <div class="input-group">
-                            <span class="input-group-text">+62</span>
-                            <input type="text" class="form-control" id="no_telp" name="no_telp" placeholder="Masukkan nomor Whatsapp kamu"
-                                value="{{ old('no_telp') }}">
+
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Username Tiktok</label>
+                            <input type="text" class="form-control" id="username" name="username" placeholder="Masukkan username tiktok kamu"
+                                value="{{ old('username') }}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="no_telp" class="form-label">Nomor Whatsapp</label>
+                            <div class="input-group">
+                                <span class="input-group-text">+62</span>
+                                <input type="text" class="form-control" id="no_telp" name="no_telp" placeholder="Masukkan nomor Whatsapp kamu"
+                                    value="{{ old('no_telp') }}">
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <a href="http://localhost:8000/auth/register?username=_its.undefined&no_telp=082320459874" class="btn btn-primary spa-link">
-                    Tes
-                </a>
-
-                <div class="card-footer">
-                    <button type="submit" class="btn btn-primary d-block w-100">
-                        Lanjut
-                    </button>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary d-block w-100">
+                            Lanjut
+                        </button>
+                    </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
-</div>
+@endsection
 
 @section('scripts')
     <script data-partial="1">

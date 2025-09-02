@@ -1,22 +1,27 @@
-<div class="row">
-    <div class="col-md-6 mx-auto">
-        <div class="card">
-            <div class="card-body text-center">
-                <h3 class="mb-2">Verifikasi Email Kamu</h3>
-                <p class="mb-4">
-                    Kami telah mengirim link verifikasi ke <b>{{ auth()->user()->email }}</b>.
-                    Silakan cek inbox (atau folder spam).
-                </p>
+@extends('layouts.auth.index')
+@section('title', 'Verifikasi email')
 
-                <div class="d-flex gap-2 justify-content-center">
-                    <button id="btn-resend" class="btn btn-primary">Kirim Ulang Email</button>
+@section('content')
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h3 class="mb-2">Verifikasi Email Kamu</h3>
+                    <p class="mb-4">
+                        Kami telah mengirim link verifikasi ke <b>{{ auth()->user()->email }}</b>.
+                        Silakan cek inbox (atau folder spam).
+                    </p>
+
+                    <div class="d-flex gap-2 justify-content-center">
+                        <button id="btn-resend" class="btn btn-primary">Kirim Ulang Email</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+@endsection
 
-@push('scripts')
+@section('scripts')
     <script data-partial="{{ isset($view) }}">
         $("#btn-resend").on("click", function() {
             let btn = $(this);
@@ -52,4 +57,4 @@
             });
         });
     </script>
-@endpush
+@endsection
