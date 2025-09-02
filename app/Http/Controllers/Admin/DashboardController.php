@@ -9,14 +9,6 @@ class DashboardController extends Controller
 {
     public function index(Request $request)
     {
-        if ($request->ajax()) {
-            return response()->json([
-                'title' => 'Dashboard',
-                'content' => view('pages.admin.dashboard')->render()
-            ]);
-        } else {
-            $data['view'] = 'pages.admin.dashboard';
-            return view('layouts.content', $data);
-        }
+        return spaRender($request, 'Dashboard', 'layouts.admin.content', 'pages.admin.dashboard');
     }
 }

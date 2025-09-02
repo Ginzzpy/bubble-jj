@@ -1,4 +1,5 @@
 @extends('layouts.admin.app')
+@section('title', $title ?? 'Unknown')
 
 @if (isset($view))
     @section('content')
