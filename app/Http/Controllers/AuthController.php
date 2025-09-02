@@ -19,7 +19,7 @@ class AuthController extends Controller
             return redirect()->route('user.login-view');
         }
 
-        return spaRender($request, 'Lengkapi Data Pendaftaran', 'layouts.auth.content', 'pages.auth.register');
+        return spaRender($request, 'pages.auth.register');
     }
 
     // Register logic for 'user' role
@@ -64,7 +64,7 @@ class AuthController extends Controller
             return redirect()->route($request->user()->role->direct ?? 'landing');
         }
 
-        return spaRender($request, 'Verifikasi Email', 'layouts.auth.content', 'pages.auth.notice');
+        return spaRender($request, 'pages.auth.notice');
     }
 
     // Resend verification email for 'user' role
@@ -89,7 +89,7 @@ class AuthController extends Controller
     // Login view for 'user' role
     public function userLoginForm(Request $request)
     {
-        return spaRender($request, 'Masuk/Daftar', 'layouts.auth.content', 'pages.auth.user');
+        return spaRender($request, 'pages.auth.user');
     }
 
     // Login logic for 'user' role
@@ -125,6 +125,6 @@ class AuthController extends Controller
 
     public function adminLoginForm(Request $request)
     {
-        return spaRender($request, 'Masuk/Daftar', 'layouts.auth.content', 'pages.auth.admin');
+        return spaRender($request, 'pages.auth.admin');
     }
 }
