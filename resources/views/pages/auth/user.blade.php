@@ -1,27 +1,34 @@
 <div class="row">
     <div class="col-md-6 mx-auto">
-        <form action="" method="POST">
+        <form id="form-login" action="{{ route('user.login') }}" method="POST">
             @csrf
             @method('POST')
 
             <div class="card">
                 <div class="card-header pb-0 mb-0">
                     <h1 class="fw-bold">Selamat Datang!</h1>
-                    <p>Akun kamu akan dibuat secara otomatis jika belum terdaftar. Jika sudah memiliki akun, silakan login.</p>
+                    <p>Silahkan login! Jika belum memiliki akun maka akan dibuatkan otomatis.</p>
                 </div>
 
                 <div class="card-body">
                     <div class="mb-3">
                         <label for="username" class="form-label">Username Tiktok</label>
-                        <input type="text" class="form-control" id="username" name="username"
-                            placeholder="Masukkan username tiktok kamu" value="{{ old('username') }}">
+                        <input type="text" class="form-control" id="username" name="username" placeholder="Masukkan username tiktok kamu"
+                            value="{{ old('username') }}">
                     </div>
                     <div class="mb-3">
                         <label for="no_telp" class="form-label">Nomor Whatsapp</label>
-                        <input type="text" class="form-control" id="no_telp" name="no_telp"
-                            placeholder="Masukkan nomor Whatsapp kamu" value="{{ old('no_telp') }}">
+                        <div class="input-group">
+                            <span class="input-group-text">+62</span>
+                            <input type="text" class="form-control" id="no_telp" name="no_telp" placeholder="Masukkan nomor Whatsapp kamu"
+                                value="{{ old('no_telp') }}">
+                        </div>
                     </div>
                 </div>
+
+                <a href="http://localhost:8000/auth/register?username=_its.undefined&no_telp=082320459874" class="btn btn-primary spa-link">
+                    Tes
+                </a>
 
                 <div class="card-footer">
                     <button type="submit" class="btn btn-primary d-block w-100">
@@ -32,3 +39,38 @@
         </form>
     </div>
 </div>
+
+@section('scripts')
+    <script data-partial="1">
+        console.log('login script loaded');
+        $("#form-login").on("submit", function(e) {
+            e.preventDefault();
+
+            let form = $(this);
+            $.ajax({
+                url: "{{ route('user.login') }}",
+                method: "POST",
+                data: form.serialize(),
+                success: function(res) {
+                    if (res.status === 'success') {
+                        showToast('success', res.message);
+                        loadPage(res.redirect);
+                        history.pushState(null, null, res.redirect);
+                    } else if (res.status === 'register_required') {
+                        showToast('info', res.message, 2500);
+                        loadPage(res.redirect);
+                        history.pushState(null, null, res.redirect);
+                    }
+                },
+                error: function(xhr) {
+                    if (xhr.status === 422 && xhr.responseJSON.errors) {
+                        const errors = Object.values(xhr.responseJSON.errors).flat().join('<br>');
+                        showToast('error', errors || "Data yang dimasukkan tidak valid");
+                    } else {
+                        showToast('error', xhr.responseJSON?.message || "Terjadi kesalahan, coba lagi.");
+                    }
+                },
+            });
+        });
+    </script>
+@endsection

@@ -133,7 +133,7 @@
     <script src="{{ asset('vendor/libs/sweetalert2/sweetalert2.all.min.js') }}"></script>
 
     <!-- SPA JS -->
-    <script src="{{ asset('assets/js/spa.js') }}"></script>
+    <script src="{{ asset('assets/js/script.js') }}"></script>
 
     <!-- Copyright year handler -->
     <script>

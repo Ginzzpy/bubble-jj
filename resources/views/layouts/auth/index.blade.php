@@ -80,14 +80,18 @@
         <!-- Date & Time Picker JS -->
         <script src="{{ asset('vendor/libs/moment/moment.js') }}"></script>
 
-        <!-- Date & Time Picker JS -->
-        <script src="{{ asset('assets/js/spa.js') }}"></script>
+        <!-- Sweetalert2 JS -->
+        <script src="{{ asset('vendor/libs/sweetalert2/sweetalert2.all.min.js') }}"></script>
+
+        <!-- SPA JS -->
+        <script src="{{ asset('assets/js/script.js') }}"></script>
 
         <script>
             let date = moment(new Date());
             $("#year").text(date.format("YYYY"));
         </script>
 
+        @yield('scripts')
 </body>
 
 </html>
