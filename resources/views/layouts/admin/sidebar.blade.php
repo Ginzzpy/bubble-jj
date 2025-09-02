@@ -2,7 +2,7 @@
 
     <!-- Start::main-sidebar-header -->
     <div class="main-sidebar-header">
-        <a href="{{ route('dashboard') }}" class="header-logo">
+        <a href="" class="header-logo">
             <img src="{{ asset('vendor/images/brand-logos/desktop-logo.png') }}" alt="logo" class="desktop-logo">
             <img src="{{ asset('vendor/images/brand-logos/toggle-logo.png') }}" alt="logo" class="toggle-logo">
             <img src="{{ asset('vendor/images/brand-logos/desktop-dark.png') }}" alt="logo" class="desktop-dark">
@@ -31,11 +31,17 @@
 
                 <!-- Start::slide -->
                 <li class="slide">
-                    <a href="{{ route('dashboard') }}" class="side-menu__item {{ isActive('dashboard') }} spa-link">
+                    <a href="{{ route('admin.page1') }}" class="side-menu__item {{ isActive('admin.page1') }} spa-link">
                         <span class="side-menu__icon">
                             <i class='fe fe-airplay'></i>
                         </span>
-                        <span class="side-menu__label">Dashboard</span>
+                        <span class="side-menu__label">Page 1</span>
+                    </a>
+                    <a href="{{ route('admin.page2') }}" class="side-menu__item {{ isActive('admin.page2') }} spa-link">
+                        <span class="side-menu__icon">
+                            <i class='fe fe-airplay'></i>
+                        </span>
+                        <span class="side-menu__label">Page 2</span>
                     </a>
                 </li>
                 <!-- End::slide -->
