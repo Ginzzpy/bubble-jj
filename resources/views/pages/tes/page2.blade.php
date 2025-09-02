@@ -1,8 +1,8 @@
 @extends('layouts.admin.app')
-@section('title', 'Page 1')
+@section('title', 'Page 2')
 
 @section('styles')
-    <style>
+    <style data-partial="1">
         #text {
             color: green;
         }
@@ -14,7 +14,7 @@
 @endsection
 
 @section('scripts')
-    <script>
+    <script data-partial="1">
         $("#text").text("Tes Halaman 2");
     </script>
 @endsection
