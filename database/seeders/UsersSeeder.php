@@ -21,7 +21,7 @@ class UsersSeeder extends Seeder
             'name' => 'Super User',
             'email' => 'super@example.com',
             'password' => bcrypt('super'),
-            'verified_at' => now(),
+            'email_verified_at' => now(),
             'is_active' => true,
             'role_id' => $superRole->id
         ]);
@@ -30,7 +30,7 @@ class UsersSeeder extends Seeder
             'name' => 'Admin User',
             'email' => 'adminuser@example.com',
             'password' => bcrypt('admin'),
-            'verified_at' => now(),
+            'email_verified_at' => now(),
             'is_active' => true,
             'role_id' => $adminRole->id
         ]);
