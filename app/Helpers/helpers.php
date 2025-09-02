@@ -1,19 +1,24 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 
 if (!function_exists('spaRender')) {
-  function spaRender(Request $request, string $title, string $layout, string $view, array $data = [])
+  function spaRender(Request $request, string $content, array $data = [])
   {
     if ($request->ajax()) {
+      /** @var \Illuminate\View\View $view */
+      $view = View::make($content);
+      $sections = $view->renderSections();
+
       return response()->json([
-        'title' => $title,
-        'content' => view($view, $data)->render()
+        'title' => $sections['title'] ?? '',
+        'styles'  => $sections['styles'] ?? '',
+        'content' => $sections['content'] ?? '',
+        'scripts' => $sections['scripts'] ?? '',
       ]);
     } else {
-      $data['view'] = $view;
-      $data['title'] = $title;
-      return view($layout, $data);
+      return view($content, $data);
     }
   }
 }

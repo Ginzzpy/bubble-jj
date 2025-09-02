@@ -60,17 +60,15 @@ function loadPage(url) {
 
         removePartialTags();
 
-        const content = $("<div>").html(response.content);
+        if (response.styles) {
+            $("head").append(response.styles);
+        }
 
-        content.find('style[data-partial="1"]').each(function () {
-            $("head").append(this);
-        });
+        $("#main-content").html(response.content || "");
 
-        content.find('script[data-partial="1"]').each(function () {
-            $("body").append(this);
-        });
-
-        $("#main-content").html(content.html());
+        if (response.scripts) {
+            $("body").append(response.scripts);
+        }
 
         if (response.title) {
             document.title = response.title;
