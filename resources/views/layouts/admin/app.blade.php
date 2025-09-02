@@ -38,7 +38,7 @@
     <!-- Sweetalert2 JS -->
     <link rel="stylesheet" href="{{ asset('vendor/libs/sweetalert2/sweetalert2.min.css') }}">
 
-    @stack('styles')
+    @yield('styles')
 
 </head>
 
@@ -161,7 +161,7 @@
         });
     </script>
 
-    @stack('scripts')
+    @yield('scripts')
 
 </body>
 
