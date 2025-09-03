@@ -54,7 +54,7 @@ class UserRegisterController extends Controller
         return response()->json([
             'status'  => 'success',
             'message' => 'Registrasi berhasil! Silakan cek email untuk verifikasi.',
-            'redirect' => route('email.verification.notice'),
+            'redirect' => route('verification.notice'),
         ]);
     }
 }
