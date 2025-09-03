@@ -15,8 +15,7 @@
     <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
 
     <!-- [Google Font] Family -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&display=swap"
-        id="main-font-link">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&display=swap" id="main-font-link">
 
     <!-- [Template CSS Files] -->
     <link rel="stylesheet" href="{{ asset('vendor/css/landing/style.css') }}" id="main-style-link">
@@ -50,8 +49,13 @@
                 </a>
                 <div>
                     <div class="d-flex align-items-center gap-3">
+                        @if (Auth::check())
+                            <a class="text-white" href="{{ route(Auth::user()->role->direct) }}">
+                                Dashboard
+                            </a>
+                        @endif
                         <a class="btn btn-primary spa-link" href="{{ route('user.login') }}">
-                            Daftar/Login
+                            Login
                         </a>
                     </div>
                 </div>
@@ -69,12 +73,12 @@
                         Login untuk pembuatan Video.
                     </h6>
                     <div class="my-5">
-                        <a href="#menu" class="btn btn-outline-primary me-2" data-bs-toggle="collapse" role="button"
-                            aria-expanded="false" aria-controls="menu">
+                        <a href="#menu" class="btn btn-outline-primary me-2" data-bs-toggle="collapse" role="button" aria-expanded="false"
+                            aria-controls="menu">
                             Lihat Menu
                         </a>
                         <a href="{{ route('user.login') }}" class="btn btn-primary spa-link">
-                            Daftar/Login
+                            Login
                         </a>
                     </div>
                 </div>
