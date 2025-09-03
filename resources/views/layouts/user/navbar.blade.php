@@ -5,7 +5,7 @@
         </a>
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link text-danger" href="#">
+                <a class="nav-link text-danger" href="#!" id="logout-btn>
                     <i class='mdi mdi-logout'></i>
                     Logout
                 </a>
