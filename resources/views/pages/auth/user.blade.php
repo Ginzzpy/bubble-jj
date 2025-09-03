@@ -4,7 +4,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-6 mx-auto">
-            <form id="form-login" action="{{ route('user.login') }}" method="POST">
+            <form id="form-login" action="{{ route('login.user.post') }}" method="POST">
                 @csrf
                 @method('POST')
 

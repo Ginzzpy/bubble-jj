@@ -8,7 +8,7 @@ Route::get('/', function () {
 
 // Replace default Laravel 'login' route
 Route::get('/login', function () {
-    return redirect()->route('user.login-view');
+    return redirect()->route('login.user.view');
 })->name('login');
 
 require __DIR__ . '/auth.php';

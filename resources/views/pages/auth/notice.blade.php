@@ -28,7 +28,7 @@
             btn.attr("disabled", true).text("Mengirim...");
 
             $.ajax({
-                url: "{{ route('verification.send') }}",
+                url: "{{ route('email.verification.resend') }}",
                 type: "POST",
                 data: {
                     _token: "{{ csrf_token() }}"
