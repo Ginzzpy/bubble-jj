@@ -9,7 +9,7 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>@yield('title') - {{ SettingsHelper::get('favicon', config('app.name')) }}</title>
+    <title>@yield('title') - {{ SettingsHelper::get('app_name', config('app.name')) }}</title>
     <meta name="Author" content="{{ SettingsHelper::get('description') }}">
     <meta name="Description" content="{{ SettingsHelper::get('author') }}">
     <meta name="keywords" content="{{ SettingsHelper::get('keywords') }}">
