@@ -86,7 +86,14 @@
             <div class="row">
                 <div class="collapse" id="menu">
                     <div class="row">
-                        {{-- @foreach (CacheHelper::getMenu() as $menu)
+                        @php
+                            use App\Models\UploadMenu;
+
+                            $menus = UploadMenu::rememberCache('menus_all', 3600, function () {
+                                return UploadMenu::all();
+                            });
+                        @endphp
+                        @foreach ($menus as $menu)
                             <div class="col-md-4">
                                 <div class="card">
                                     <div class="card-header p-3">
@@ -105,7 +112,7 @@
                                     </div>
                                 </div>
                             </div>
-                        @endforeach --}}
+                        @endforeach
                     </div>
                 </div>
             </div>
