@@ -20,9 +20,6 @@
     <!-- Choices JS -->
     <script src="{{ asset('vendor/libs/choices.js/public/assets/scripts/choices.min.js') }}"></script>
 
-    <!-- Main Theme Js -->
-    <script src="{{ asset('vendor/js/main.js') }}"></script>
-
     <!-- Bootstrap Css -->
     <link id="style" href="{{ asset('vendor/libs/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 
@@ -68,13 +65,16 @@
             </div>
         </footer>
 
+        <!-- Main Theme Js -->
+        <script src="{{ asset('vendor/js/main.js') }}"></script>
+
         <!-- Main Theme JS -->
         <script src="{{ asset('vendor/js/authentication-main.js') }}"></script>
 
         <!-- JQuery JS -->
         <script src="{{ asset('vendor/js/jquery.min.js') }}"></script>
 
-        {{-- Bootstrap --}}
+        {{-- Bootstrap JS --}}
         <script src="{{ asset('vendor/js/landing/bootstrap.min.js') }}"></script>
 
         <!-- Date & Time Picker JS -->
