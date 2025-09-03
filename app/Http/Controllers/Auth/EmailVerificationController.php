@@ -25,7 +25,7 @@ class EmailVerificationController extends Controller
             return response()->json([
                 'status'   => 'success',
                 'message'  => 'Email sudah terverifikasi.',
-                'redirect' => route('home'),
+                'redirect' => route($request->user()->role->direct ?? 'user.dashboard'),
             ]);
         }
 
