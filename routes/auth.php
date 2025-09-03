@@ -1,34 +1,46 @@
 <?php
 
+use App\Http\Controllers\Auth as Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
-use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
-Route::prefix('auth')->controller(AuthController::class)->group(function () {
-  Route::middleware('guest')->group(function () {
-    Route::get('/user', 'userLoginForm')->name('user.login-view');
-    Route::post('/user', 'userLogin')->name('user.login');
+/**
+ * Auth routes
+ */
 
-    Route::get('/admin', 'adminLoginForm')->name('admin.login-view');
-
-    // Register route for 'user' role
-    Route::get('/register', 'registerForm')->name('register-view');
-    Route::post('/register', 'register')->name('register');
-
-    // Set password route for 'user' role
-    Route::get('/setpassword', 'setPasswordForm')->name('setpassword.view');
-    Route::post('setpassword', 'setPassword')->name('setpassword');
+/* --- Login route group --- */
+Route::middleware('guest')->prefix('login')->name('login.')->group(function () {
+  // User Login
+  Route::controller(Auth\UserLoginController::class)->name('user.')->group(function () {
+    Route::get('/user', 'loginForm')->name('view');
+    Route::post('/user', 'login')->name('post');
   });
 
-  Route::prefix('email')->middleware('auth')->group(function () {
-    Route::get('/verify', 'verificationNotice')->name('verification.notice');
-    Route::post('/verify/resend', 'resendVerification')->middleware('throttle:5,5')->name('verification.send');
-    Route::get('/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
-      $request->fulfill();
-      $user = $request->user();
+  // Admin Login
+  Route::controller(Auth\AdminLoginController::class)->name('admin.')->group(function () {
+    Route::get('/admin', 'loginForm')->name('view');
+    Route::post('/admin', 'login')->name('post');
+  });
+});
 
-      $user->load('role');
-      return redirect()->route($user->role->redirect ?? 'user.dashboard');
-    })->middleware(['signed', 'auth'])->name('verification.verify');
+/* --- User password route group --- */
+Route::middleware('guest')->controller(Auth\UserPasswordController::class)->prefix('password')->name('password.')->group(function () {
+  Route::name('set.')->group(function () {
+    Route::get('/set', 'setForm')->name('view');
+    Route::post('/set', 'set')->name('post');
+  });
+});
+
+/* --- User register route group --- */
+Route::middleware('guest')->controller(Auth\UserRegisterController::class)->name('register.')->group(function () {
+  Route::get('/register', 'registerForm')->name('view');
+  Route::post('/register', 'register')->name('post');
+});
+
+/* --- User email verification --- */
+Route::middleware('auth')->prefix('email')->name('email.')->group(function () {
+  Route::controller(Auth\EmailVerificationController::class)->prefix('verify')->name('verification.')->group(function () {
+    Route::get('/verify', 'notice')->name('notice');
+    Route::get('/verify/{id}/{hash}', 'verify')->middleware(['signed', 'auth'])->name('verify');
+    Route::post('/verify/resend', 'resend')->name('resend');
   });
 });
