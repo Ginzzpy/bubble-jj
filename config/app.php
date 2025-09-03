@@ -126,5 +126,6 @@ return [
     'aliases' => [
         'Auth' => Illuminate\Support\Facades\Auth::class,
         'Session' => Illuminate\Support\Facades\Session::class,
+        'SettingsHelper' => App\Helpers\SettingsHelper::class
     ],
 ];
