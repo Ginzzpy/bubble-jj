@@ -51,6 +51,10 @@
             e.preventDefault();
 
             let form = $(this);
+            let btnSubmit = form.find("button[type=submit]");
+
+            btnSubmit.prop("disabled", true).text("Loading...");
+
             $.ajax({
                 url: form.attr("action"),
                 type: form.attr("method"),
@@ -62,12 +66,18 @@
                         history.pushState(null, null, res.redirect);
                     } else {
                         showToast("error", res.message);
+                        btnSubmit.prop("disabled", false).text("Lanjut");
                     }
                 },
                 error: function(xhr) {
-                    let err = xhr.responseJSON?.message || "Terjadi kesalahan!";
-                    console.log(err);
-                    showToast("error", err);
+                    if (xhr.status === 422 && xhr.responseJSON.errors) {
+                        const errors = Object.values(xhr.responseJSON.errors).flat().join('<br>');
+                        showToast('error', errors || "Data yang dimasukkan tidak valid");
+                    } else {
+                        showToast('error', xhr.responseJSON?.message || "Terjadi kesalahan, coba lagi.");
+                    }
+
+                    btnSubmit.prop("disabled", false).text("Lanjut");
                 }
             });
         });

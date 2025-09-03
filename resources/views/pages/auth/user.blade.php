@@ -48,6 +48,10 @@
             e.preventDefault();
 
             let form = $(this);
+            let btnSubmit = form.find("button[type=submit]");
+
+            btnSubmit.prop("disabled", true).text("Loading...");
+
             $.ajax({
                 url: "{{ route('user.login') }}",
                 method: "POST",
@@ -61,6 +65,9 @@
                         showToast('info', res.message, 2500);
                         loadPage(res.redirect);
                         history.pushState(null, null, res.redirect);
+                    } else {
+                        showToast("error", res.message);
+                        btnSubmit.prop("disabled", false).text("Lanjut");
                     }
                 },
                 error: function(xhr) {
@@ -70,6 +77,8 @@
                     } else {
                         showToast('error', xhr.responseJSON?.message || "Terjadi kesalahan, coba lagi.");
                     }
+
+                    btnSubmit.prop("disabled", false).text("Lanjut");
                 },
             });
         });
