@@ -20,6 +20,6 @@ class AdminLoginController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect()->route('login.user.view');
+        return redirect()->route('login');
     }
 }

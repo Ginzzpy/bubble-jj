@@ -54,7 +54,7 @@
                                 Dashboard
                             </a>
                         @else
-                            <a class="btn btn-primary" href="{{ route('login.user.view') }}">
+                            <a class="btn btn-primary" href="{{ route('login') }}">
                                 Login
                             </a>
                         @endif
@@ -83,7 +83,7 @@
                                 Dashboard
                             </a>
                         @else
-                            <a href="{{ route('login.user.view') }}" class="btn btn-primary">
+                            <a href="{{ route('login') }}" class="btn btn-primary">
                                 Login
                             </a>
                         @endif

@@ -17,7 +17,7 @@ class UserPasswordController extends Controller
     public function setForm(Request $request)
     {
         if (!$request->filled(['username', 'no_telp'])) {
-            return redirect()->route('login.user.view');
+            return redirect()->route('login');
         }
 
         return spaRender($request, 'pages.auth.setpassword');
