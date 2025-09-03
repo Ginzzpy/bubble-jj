@@ -44,3 +44,6 @@ Route::middleware('auth')->prefix('email')->group(function () {
     Route::post('/verify/resend', 'resend')->name('resend');
   });
 });
+
+/* --- Logout route --- */
+Route::post('/logout', [Auth\AdminLoginController::class, 'logout'])->name('logout');
