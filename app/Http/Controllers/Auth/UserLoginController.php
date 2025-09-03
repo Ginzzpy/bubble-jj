@@ -45,7 +45,7 @@ class UserLoginController extends Controller
             return response()->json([
                 'status' => 'setpassword_required',
                 'message' => 'Akun belum terdaftar! Silahkan lengkapi data',
-                'redirect' => route('setpassword.view', [
+                'redirect' => route('password.set.view', [
                     'username' => $request->username,
                     'no_telp' => $request->no_telp,
                 ]),
@@ -76,7 +76,7 @@ class UserLoginController extends Controller
             return response()->json([
                 'status' => 'register_required',
                 'message' => 'Akun belum terdaftar! Silahkan lengkapi data',
-                'redirect' => route('register-view', [
+                'redirect' => route('register.view', [
                     'username' => $request->username,
                     'no_telp' => $request->no_telp,
                 ]),

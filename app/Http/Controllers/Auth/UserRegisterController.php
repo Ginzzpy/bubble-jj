@@ -17,7 +17,7 @@ class UserRegisterController extends Controller
     public function registerForm(Request $request)
     {
         if (!$request->filled(['username', 'no_telp'])) {
-            return redirect()->route('user.login-view');
+            return redirect()->route('login.user.view');
         }
 
         return spaRender($request, 'pages.auth.register');
@@ -54,7 +54,7 @@ class UserRegisterController extends Controller
         return response()->json([
             'status'  => 'success',
             'message' => 'Registrasi berhasil! Silakan cek email untuk verifikasi.',
-            'redirect' => route('verification.notice'),
+            'redirect' => route('email.verification.notice'),
         ]);
     }
 }
