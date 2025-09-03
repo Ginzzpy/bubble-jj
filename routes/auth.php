@@ -14,6 +14,10 @@ Route::prefix('auth')->controller(AuthController::class)->group(function () {
     // Register route for 'user' role
     Route::get('/register', 'registerForm')->name('register-view');
     Route::post('/register', 'register')->name('register');
+
+    // Set password route for 'user' role
+    Route::get('/setpassword', 'setPasswordForm')->name('setpassword.view');
+    Route::post('setpassword', 'setPassword')->name('setpassword');
   });
 
   Route::prefix('email')->middleware('auth')->group(function () {
