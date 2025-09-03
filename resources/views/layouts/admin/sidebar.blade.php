@@ -3,7 +3,7 @@
     <!-- Start::main-sidebar-header -->
     <div class="main-sidebar-header">
         <a href="" class="header-logo">
-            <img src="{{ asset('assets/images/brand-logos/desktop-logo.png') }}" alt="logo" class="desktop-logo">
+            <img src="{{ asset(SettingsHelper::get('logo')) }}" alt="logo" class="desktop-logo">
         </a>
     </div>
     <!-- End::main-sidebar-header -->

@@ -9,13 +9,13 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>@yield('title') - {{ config('app.name') }}</title>
-    <meta name="Author" content="">
-    <meta name="Description" content="">
-    <meta name="keywords" content="">
+    <title>@yield('title') - {{ SettingsHelper::get('favicon', config('app.name')) }}</title>
+    <meta name="Author" content="{{ SettingsHelper::get('description') }}">
+    <meta name="Description" content="{{ SettingsHelper::get('author') }}">
+    <meta name="keywords" content="{{ SettingsHelper::get('keywords') }}">
 
     <!-- Favicon -->
-    <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset(SettingsHelper::get('favicon')) }}" type="image/x-icon">
 
     <!-- Choices JS -->
     <script src="{{ asset('vendor/libs/choices.js/public/assets/scripts/choices.min.js') }}"></script>
@@ -80,7 +80,7 @@
                 <span class="text-muted">
                     Copyright ©<span id="year"></span>
                     <a href="https://www.livetok.online/license.html" target="_blank" class="text-dark fw-semibold">
-                        PT Digjaya Mahakarya Teknologi
+                        {{ SettingsHelper::get('copyright') }}
                     </a>. All rights reserved
                 </span>
             </div>
@@ -101,6 +101,10 @@
         @csrf
         @method('POST')
     </form>
+
+    <script>
+        window.appName = @json(SettingsHelper::get('app_name', config('app.name')));
+    </script>
 
     <!-- Main Theme Js -->
     <script src="{{ asset('vendor/js/main.js') }}"></script>

@@ -10,7 +10,7 @@
             <div class="header-element">
                 <div class="horizontal-logo">
                     <a href="index.html" class="header-logo">
-                        <img src="{{ asset('assets/images/brand-logos/desktop-logo.png') }}" alt="logo" class="desktop-logo">
+                        <img src="{{ asset(SettingsHelper::get('logo')) }}" alt="logo" class="desktop-logo">
                     </a>
                 </div>
             </div>

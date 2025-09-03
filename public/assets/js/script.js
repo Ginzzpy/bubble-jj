@@ -71,7 +71,7 @@ function loadPage(url) {
         }
 
         if (response.title) {
-            document.title = response.title + " - Bubble JJ";
+            document.title = response.title + " - " + window.appName;
             $("#breadcrumb").text(response.title);
         }
 
