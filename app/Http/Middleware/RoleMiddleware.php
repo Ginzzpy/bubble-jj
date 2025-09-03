@@ -13,21 +13,12 @@ class RoleMiddleware
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next, ...$params): Response
+    public function handle(Request $request, Closure $next, ...$roles): Response
     {
-        // default guard
-        $guard = 'web';
-        $roles = $params;
+        $user = $request->user();
 
-        foreach ($params as $key => $param) {
-            if (str_starts_with($param, 'guard=')) {
-                $guard = str_replace('guard=', '', $param);
-                unset($roles[$key]);
-            }
-        }
-
-        if (!auth($guard)->check() || !in_array(auth($guard)->user()->role->name, $roles)) {
-            abort(403, 'Unauthorized.');
+        if (!$user || !in_array($user->role->name, $roles)) {
+            abort(403, 'Unauthorized action.');
         }
 
         return $next($request);
