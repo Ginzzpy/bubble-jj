@@ -10,10 +10,7 @@
             <div class="header-element">
                 <div class="horizontal-logo">
                     <a href="index.html" class="header-logo">
-                        <img src="../vendor/images/brand-logos/desktop-logo.png" alt="logo" class="desktop-logo">
-                        <img src="../vendor/images/brand-logos/toggle-logo.png" alt="logo" class="toggle-logo">
-                        <img src="../vendor/images/brand-logos/desktop-dark.png" alt="logo" class="desktop-dark">
-                        <img src="../vendor/images/brand-logos/toggle-dark.png" alt="logo" class="toggle-dark">
+                        <img src="{{ asset('assets/images/brand-logos/desktop-logo.png') }}" alt="logo" class="desktop-logo">
                     </a>
                 </div>
             </div>
@@ -45,8 +42,7 @@
                     <div class="d-flex align-items-center">
                         <div class="d-sm-flex wd-100p lh-0">
                             <div class="avatar avatar-md">
-                                <img alt="avatar" class="rounded-circle"
-                                    src="{{ asset('vendor/images/profiles/default.jpg') }}">
+                                <img alt="avatar" class="rounded-circle" src="{{ asset('aseets/images/profiles/default.jpg') }}">
                             </div>
                             <div class="ms-2 my-auto d-none d-xl-flex">
                                 <h6 class=" font-weight-semibold mb-0 fs-13 user-name d-sm-block d-none">
@@ -63,8 +59,7 @@
                     <div class="p-3 menu-header-content text-fixed-white rounded-top text-center">
                         <div class="">
                             <div class="avatar avatar-xl rounded-circle">
-                                <img alt="" class="rounded-circle"
-                                    src="{{ asset('vendor/images/profiles/default.jpg') }}">
+                                <img alt="" class="rounded-circle" src="{{ asset('aseets/images/profiles/default.jpg') }}">
                             </div>
                             <p class="text-fixed-white fs-18 fw-semibold mb-0">
                                 username
