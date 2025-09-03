@@ -1,32 +1,34 @@
 @extends('layouts.auth.main')
-@section('title', 'Login')
+@section('title', 'Buat Password')
 
 @section('content')
     <div class="row">
         <div class="col-md-6 mx-auto">
-            <form id="form-login" action="{{ route('user.login') }}" method="POST">
+            <form id="form-setpassword" action="{{ route('setpassword') }}" method="POST">
                 @csrf
                 @method('POST')
 
                 <div class="card">
                     <div class="card-header pb-0 mb-0">
-                        <h1 class="fw-bold">Selamat Datang!</h1>
-                        <p>Silahkan login! Jika belum memiliki akun maka akan dibuatkan otomatis.</p>
+                        <h1 class="fw-bold">Buat Password</h1>
+                        <p>Buat password untuk akun anda agar dapat menggunakan aplikasi.</p>
                     </div>
 
                     <div class="card-body">
+                        <input type="text" id="username" name="username" value="{{ request('username') }}" hidden>
+                        <input type="text" id="no_telp" name="no_telp" value="{{ request('no_telp') }}" hidden>
                         <div class="mb-3">
-                            <label for="username" class="form-label">Username Tiktok</label>
-                            <input type="text" class="form-control" id="username" name="username" placeholder="Masukkan username tiktok kamu"
-                                value="{{ old('username') }}">
-                        </div>
-                        <div class="mb-3">
-                            <label for="no_telp" class="form-label">Nomor Whatsapp</label>
+                            <label for="email" class="form-label">Password</label>
                             <div class="input-group">
-                                <span class="input-group-text">+62</span>
-                                <input type="text" class="form-control" id="no_telp" name="no_telp" placeholder="Masukkan nomor Whatsapp kamu"
-                                    value="{{ old('no_telp') }}">
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Masukkan password kamu"
+                                    value="{{ old('password') }}">
+                                <button class="btn btn-light" type="button" onclick="togglePassword('password')">
+                                    <i class='fa fa-eye'></i>
+                                </button>
                             </div>
+                            <span class="form-text">
+                                Password ini digunakan saat kamu mengunggah Foto/Video. Simpan dan jangan dibagikan!
+                            </span>
                         </div>
                     </div>
 
@@ -42,9 +44,8 @@
 @endsection
 
 @section('scripts')
-    <script data-partial="1">
-        console.log('login script loaded');
-        $("#form-login").on("submit", function(e) {
+    <script data-partial="{{ isset($view) }}">
+        $("#form-setpassword").on("submit", function(e) {
             e.preventDefault();
 
             let form = $(this);
@@ -57,17 +58,9 @@
                 type: form.attr("method"),
                 data: form.serialize(),
                 success: function(res) {
-                    if (res.status === 'success') {
-                        showToast('success', res.message);
+                    if (res.status === "success") {
+                        showToast("success", res.message);
                         window.location.href = res.redirect; // not SPA because of different layout
-                    } else if (res.status === 'register_required') {
-                        showToast('info', res.message, 2500);
-                        loadPage(res.redirect);
-                        history.pushState(null, null, res.redirect);
-                    } else if (res.status === 'setpassword_required') {
-                        showToast('info', res.message, 2500);
-                        loadPage(res.redirect);
-                        history.pushState(null, null, res.redirect);
                     } else {
                         showToast("error", res.message);
                         btnSubmit.prop("disabled", false).text("Lanjut");
@@ -82,8 +75,8 @@
                     }
 
                     btnSubmit.prop("disabled", false).text("Lanjut");
-                },
+                }
             });
-        });
+        })
     </script>
 @endsection
