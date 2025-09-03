@@ -17,7 +17,7 @@ class UserRegisterController extends Controller
     public function registerForm(Request $request)
     {
         if (!$request->filled(['username', 'no_telp'])) {
-            return redirect()->route('login.user.view');
+            return redirect()->route('login');
         }
 
         return spaRender($request, 'pages.auth.register');
