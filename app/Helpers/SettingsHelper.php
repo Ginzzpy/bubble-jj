@@ -3,37 +3,53 @@
 namespace App\Helpers;
 
 use App\Models\Setting;
-use Illuminate\Support\Facades\Cache;
 
 class SettingsHelper
 {
-    public static function get($key, $default = null)
+    protected static string $cacheKey = 'settings.all';
+    protected static int $cacheSeconds = 0; // 0 for rememberForever
+
+    /**
+     * Get settings based on key
+     *
+     * @param string $key
+     * @param mixed $default
+     * @return mixed
+     */
+    public static function get(string $key, $default = null)
     {
-        $settings = Cache::rememberForever('settings.all', function () {
+        $settings = Setting::rememberCache(self::$cacheKey, self::$cacheSeconds, function () {
             return Setting::all()->pluck('value', 'key')->toArray();
         });
 
         return $settings[$key] ?? $default;
     }
 
-    public static function set($key, $value)
+    /**
+     * Set or update settings
+     *
+     * @param string $key
+     * @param mixed $value
+     * @return Setting
+     */
+    public static function set(string $key, $value)
     {
         $setting = Setting::updateOrCreate(
             ['key' => $key],
             ['value' => $value]
         );
 
-        // refresh cache
-        Cache::forget('settings.all');
-        Cache::rememberForever('settings.all', function () {
-            return Setting::all()->pluck('value', 'key')->toArray();
-        });
+        // Clear cache via trait (bootCacheable can also handle this automatically)
+        Setting::forgetCache(self::$cacheKey);
 
         return $setting;
     }
 
+    /**
+     * Clear cache manually
+     */
     public static function clearCache()
     {
-        Cache::forget('settings.all');
+        Setting::forgetCache(self::$cacheKey);
     }
 }
