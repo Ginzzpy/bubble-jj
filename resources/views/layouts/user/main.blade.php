@@ -54,8 +54,10 @@
     <!-- Loader -->
 
     <div class="page">
+        @include('layouts.user.navbar')
+
         <!-- main-user-wrapper -->
-        <div class="my-auto page page-h">
+        <div class="my-auto">
             <div id="main-content" class="container mx-auto">
                 @yield('content')
             </div>
