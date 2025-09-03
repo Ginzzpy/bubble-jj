@@ -4,7 +4,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-6 mx-auto">
-            <form id="form-setpassword" action="{{ route('setpassword') }}" method="POST">
+            <form id="form-setpassword" action="{{ route('password.set.post') }}" method="POST">
                 @csrf
                 @method('POST')
 

@@ -54,7 +54,7 @@
                                 Dashboard
                             </a>
                         @endif
-                        <a class="btn btn-primary spa-link" href="{{ route('user.login') }}">
+                        <a class="btn btn-primary spa-link" href="{{ route('login.user.view') }}">
                             Login
                         </a>
                     </div>
@@ -77,7 +77,7 @@
                             aria-controls="menu">
                             Lihat Menu
                         </a>
-                        <a href="{{ route('user.login') }}" class="btn btn-primary spa-link">
+                        <a href="{{ route('login.user.view') }}" class="btn btn-primary spa-link">
                             Login
                         </a>
                     </div>
