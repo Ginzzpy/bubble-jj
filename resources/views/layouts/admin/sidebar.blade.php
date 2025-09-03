@@ -31,17 +31,11 @@
 
                 <!-- Start::slide -->
                 <li class="slide">
-                    <a href="{{ route('admin.page1') }}" class="side-menu__item {{ isActive('admin.page1') }} spa-link">
+                    <a href="{{ route('admin.dashboard') }}" class="side-menu__item {{ isActive('admin.dashboard') }} spa-link">
                         <span class="side-menu__icon">
                             <i class='fe fe-airplay'></i>
                         </span>
-                        <span class="side-menu__label">Page 1</span>
-                    </a>
-                    <a href="{{ route('admin.page2') }}" class="side-menu__item {{ isActive('admin.page2') }} spa-link">
-                        <span class="side-menu__icon">
-                            <i class='fe fe-airplay'></i>
-                        </span>
-                        <span class="side-menu__label">Page 2</span>
+                        <span class="side-menu__label">Dashboard</span>
                     </a>
                 </li>
                 <!-- End::slide -->
