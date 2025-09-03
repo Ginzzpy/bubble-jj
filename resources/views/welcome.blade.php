@@ -50,13 +50,14 @@
                 <div>
                     <div class="d-flex align-items-center gap-3">
                         @if (Auth::check())
-                            <a class="text-white" href="{{ route(Auth::user()->role->direct) }}">
+                            <a class="btn btn-primary" href="{{ route(Auth::user()->role->direct) }}">
                                 Dashboard
                             </a>
+                        @else
+                            <a class="btn btn-primary" href="{{ route('login.user.view') }}">
+                                Login
+                            </a>
                         @endif
-                        <a class="btn btn-primary spa-link" href="{{ route('login.user.view') }}">
-                            Login
-                        </a>
                     </div>
                 </div>
             </div>
@@ -77,9 +78,15 @@
                             aria-controls="menu">
                             Lihat Menu
                         </a>
-                        <a href="{{ route('login.user.view') }}" class="btn btn-primary spa-link">
-                            Login
-                        </a>
+                        @if (Auth::check())
+                            <a href="{{ route(Auth::user()->role->direct) }}" class="btn btn-primary">
+                                Dashboard
+                            </a>
+                        @else
+                            <a href="{{ route('login.user.view') }}" class="btn btn-primary">
+                                Login
+                            </a>
+                        @endif
                     </div>
                 </div>
             </div>
