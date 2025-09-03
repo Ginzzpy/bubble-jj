@@ -1,4 +1,4 @@
-@extends('layouts.auth.index')
+@extends('layouts.user.main')
 @section('title', 'Beranda')
 
 @section('content')
