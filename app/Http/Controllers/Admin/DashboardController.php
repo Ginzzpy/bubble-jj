@@ -9,6 +9,6 @@ class DashboardController extends Controller
 {
     public function index(Request $request)
     {
-        return spaRender($request, 'Dashboard', 'layouts.admin.content', 'pages.admin.dashboard');
+        return spaRender($request, 'pages.admin.dashboard');
     }
 }
