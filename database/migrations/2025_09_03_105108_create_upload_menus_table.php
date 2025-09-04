@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->string('price');
             $table->text('description');
-            $table->string('btn_link')->nullable();
             $table->timestamps();
         });
     }
