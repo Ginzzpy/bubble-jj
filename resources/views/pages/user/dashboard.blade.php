@@ -109,9 +109,16 @@
             e.preventDefault();
             const redirect = $(this).attr("href");
 
-            confirmPassword(function() {
-                loadPage(redirect);
-                history.pushState(null, null, redirect);
+            $.get("{{ route('password.status') }}", function(res) {
+                if (res.confirmed) {
+                    loadPage(redirect);
+                    history.pushState(null, null, redirect);
+                } else {
+                    confirmPassword(function() {
+                        loadPage(redirect);
+                        history.pushState(null, null, redirect);
+                    });
+                }
             });
         });
     </script>
