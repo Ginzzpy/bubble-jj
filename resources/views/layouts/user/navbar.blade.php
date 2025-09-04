@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container">
         <a class="navbar-brand" href="#">
-            <img src="{{ asset(SettingsHelper::get('logo')) }}" alt="logo" class="img-fluid" style="max-width: 150px; height: auto;">
+            <img src="{{ asset(SettingsHelper::get('logo')) }}" alt="logo" class="img-fluid" style="max-width: 100px; height: auto;">
         </a>
         <ul class="navbar-nav">
             <li class="nav-item">
