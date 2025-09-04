@@ -17,12 +17,6 @@
     <!-- Favicon -->
     <link rel="icon" href="{{ asset(SettingsHelper::get('favicon')) }}" type="image/x-icon">
 
-    <!-- Choices JS -->
-    <script src="{{ asset('vendor/libs/choices.js/public/assets/scripts/choices.min.js') }}"></script>
-
-    <!-- Main Theme Js -->
-    <script src="{{ asset('vendor/js/main.js') }}"></script>
-
     <!-- Bootstrap Css -->
     <link id="style" href="{{ asset('vendor/libs/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 
@@ -41,6 +35,7 @@
             text-align: center;
             box-shadow: none;
             z-index: 999;
+            background: #fff;
         }
     </style>
 
@@ -58,19 +53,19 @@
 
         <!-- main-user-wrapper -->
         <div class="my-auto">
-            <div id="main-content" class="container mx-auto">
+            <div id="main-content" class="container py-5 my-5 mx-auto">
                 @yield('content')
             </div>
         </div>
 
         <footer class="footer">
             <div class="container">
-                <span class="text-muted">
+                <small class="text-muted">
                     Copyright ©<span id="year"></span>
                     <a href="https://www.livetok.online/license.html" target="_blank" class="text-dark fw-semibold">
                         {{ SettingsHelper::get('copyright') }}
                     </a>. All rights reserved
-                </span>
+                </small>
             </div>
         </footer>
     </div>
