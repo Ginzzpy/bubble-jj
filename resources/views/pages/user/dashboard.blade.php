@@ -11,11 +11,12 @@
                     <div class="main-img-user profile-user">
                         <img alt="" src="{{ asset('assets/images/profiles/default.jpg') }}">
                     </div>
-                    <div class="text-center mb-3">
+                    <div class="text-center">
                         <h5 class="main-profile-name">{{ Auth::user()->name }}</h5>
                         <p class="main-profile-name-text">{{ Auth::user()->profile->no_telp }}</p>
                     </div>
                 </div>
+                <hr />
                 <div class="row mb-3">
                     <div class="col-md-6">
                         <label for="username2" class="form-label">Akun 1 (Akun utama)</label>
