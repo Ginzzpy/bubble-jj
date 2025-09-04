@@ -47,9 +47,9 @@ Route::middleware('guest')->controller(Auth\UserRegisterController::class)->name
 /* --- User email verification --- */
 Route::middleware('auth')->prefix('email')->group(function () {
   Route::controller(Auth\EmailVerificationController::class)->prefix('verify')->name('verification.')->group(function () {
-    Route::get('/verify', 'notice')->name('notice');
-    Route::get('/verify/{id}/{hash}', 'verify')->middleware(['signed', 'auth'])->name('verify');
-    Route::post('/verify/resend', 'resend')->name('resend');
+    Route::get('/', 'notice')->name('notice');
+    Route::get('/{id}/{hash}', 'verify')->middleware(['signed', 'auth'])->name('verify');
+    Route::post('/resend', 'resend')->name('resend');
   });
 });
 
