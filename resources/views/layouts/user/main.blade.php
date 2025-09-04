@@ -82,7 +82,7 @@
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <form action="" method="POST">
+                <form id="form-password-confirm" action="{{ route('password.check') }}" method="POST">
                     @csrf
                     @method('POST')
 
@@ -93,16 +93,12 @@
                         <div class="mb-3">
                             <label for="email" class="form-label">Password</label>
                             <div class="input-group">
-                                <input type="password" class="form-control" id="password" name="password" placeholder="Masukkan password kamu"
-                                    value="{{ old('password') }}">
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Masukkan password kamu">
                                 <button class="btn btn-light" type="button" onclick="togglePassword('password')">
                                     <i class='fa fa-eye'></i>
                                 </button>
                             </div>
                         </div>
-                        @error('password')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
                     </div>
                     <div class="modal-footer p-2">
                         <button type="button" class="btn btn-ghost" data-bs-dismiss="modal">Batal</button>

@@ -45,6 +45,40 @@ function showToast(icon, message, timer = 2000) {
     });
 }
 
+// Confirm password helper
+function confirmPassword(onSuccess) {
+    const modalEl = document.getElementById("confirmPasswordModal");
+    const modal = new bootstrap.Modal(modalEl);
+    const form = document.getElementById("form-password-confirm");
+
+    form.reset();
+    modal.show();
+
+    $(form)
+        .off("submit")
+        .on("submit", function (e) {
+            e.preventDefault();
+
+            $.ajax({
+                url: form.action,
+                method: form.method,
+                data: $(form).serialize(),
+                success: function (res) {
+                    if (res.status === "success") {
+                        modal.hide();
+                        if (typeof onSuccess === "function") {
+                            onSuccess(res);
+                        }
+                    }
+                },
+                error: function (xhr) {
+                    let msg = xhr.responseJSON?.message || "Password salah!";
+                    showToast("error", msg);
+                },
+            });
+        });
+}
+
 // Load page content
 function loadPage(url) {
     loader(true);

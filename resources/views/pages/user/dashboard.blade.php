@@ -31,9 +31,9 @@
                 </div>
             </div>
             <div class="card-footer">
-                <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#confirmPasswordModal">
+                <a href="{{ route('user.profile') }}" id="btn-edit" class="btn btn-primary w-100">
                     Edit akun
-                </button>
+                </a>
             </div>
         </div>
     </div>
@@ -101,4 +101,18 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script data-partial="1">
+        $("#btn-edit").on("click", function(e) {
+            e.preventDefault();
+            const redirect = $(this).attr("href");
+
+            confirmPassword(function() {
+                loadPage(redirect);
+                history.pushState(null, null, redirect);
+            });
+        });
+    </script>
 @endsection

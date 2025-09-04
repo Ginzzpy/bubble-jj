@@ -56,4 +56,26 @@ class UserPasswordController extends Controller
             'redirect' => route($user->role->direct ?? 'user.dashboard'),
         ]);
     }
+
+    public function check(Request $request)
+    {
+        $request->validate([
+            'password' => 'required|string',
+        ]);
+
+        $user = Auth::user();
+
+        if (Hash::check($request->password, $user->password)) {
+            $request->session()->put('password_confirmed_at', now());
+            return response()->json([
+                'status'  => 'success',
+                'message' => 'Password benar.',
+            ]);
+        } else {
+            return response()->json([
+                'status'  => 'error',
+                'message' => 'Password salah.',
+            ], 422);
+        }
+    }
 }
