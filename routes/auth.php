@@ -32,6 +32,10 @@ Route::controller(Auth\UserPasswordController::class)->prefix('password')->name(
   Route::middleware('auth')->group(function () {
     Route::post('/check', 'check')->name('check');
   });
+
+  Route::middleware('auth')->group(function () {
+    Route::get('/status', 'status')->name('status');
+  });
 });
 
 /* --- User register route group --- */
