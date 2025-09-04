@@ -23,10 +23,14 @@ Route::middleware('guest')->prefix('login')->name('login.')->group(function () {
 });
 
 /* --- User password route group --- */
-Route::middleware('guest')->controller(Auth\UserPasswordController::class)->prefix('password')->name('password.')->group(function () {
-  Route::name('set.')->group(function () {
+Route::controller(Auth\UserPasswordController::class)->prefix('password')->name('password.')->group(function () {
+  Route::middleware('guest')->name('set.')->group(function () {
     Route::get('/set', 'setForm')->name('view');
     Route::post('/set', 'set')->name('post');
+  });
+
+  Route::middleware('auth')->group(function () {
+    Route::post('/check', 'check')->name('check');
   });
 });
 
