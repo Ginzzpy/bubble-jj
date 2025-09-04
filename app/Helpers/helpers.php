@@ -8,7 +8,7 @@ if (!function_exists('spaRender')) {
   {
     if ($request->ajax()) {
       /** @var \Illuminate\View\View $view */
-      $view = View::make($content);
+      $view = View::make($content, $data);
       $sections = $view->renderSections();
 
       return response()->json([
