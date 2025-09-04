@@ -2,8 +2,6 @@
 
 namespace App\Providers;
 
-use App\Helpers\RoleHelper;
-use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -21,8 +19,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Blade::if('role', function ($roles, $guard = null) {
-            return RoleHelper::hasRole((array) $roles, $guard);
-        });
+        //
     }
 }

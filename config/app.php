@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'Bubble JJ'),
 
     /*
     |--------------------------------------------------------------------------
@@ -126,7 +126,6 @@ return [
     'aliases' => [
         'Auth' => Illuminate\Support\Facades\Auth::class,
         'Session' => Illuminate\Support\Facades\Session::class,
-        'CacheHelper' => App\Helpers\CacheHelper::class,
+        'SettingsHelper' => App\Helpers\SettingsHelper::class
     ],
-
 ];

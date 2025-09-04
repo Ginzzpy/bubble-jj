@@ -1,17 +1,16 @@
 <?php
 
-use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-  return view('landing');
-})->name('landing');
+    return view('welcome');
+});
 
-Route::get('/default', function () {
-  return redirect()->back();
+// Replace default Laravel 'login' route
+Route::get('/login', function () {
+    return redirect()->route('login.user.view');
 })->name('login');
 
 require __DIR__ . '/auth.php';
-require __DIR__ . '/super.php';
 require __DIR__ . '/admin.php';
-require __DIR__ . '/viewer.php';
+require __DIR__ . '/user.php';

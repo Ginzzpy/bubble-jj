@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Role;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
 class RolesSeeder extends Seeder
 {
@@ -13,22 +13,26 @@ class RolesSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('roles')->insert([
+        $roles = [
             [
                 'name' => 'super',
                 'label' => 'Super Admin',
-                'direct' => 'dashboard',
+                'direct' => 'admin.dashboard'
             ],
             [
                 'name' => 'admin',
-                'label' => 'Admin',
-                'direct' => 'dashboard',
+                'label' => 'Administrator',
+                'direct' => 'admin.dashboard'
             ],
             [
-                'name' => 'viewer',
-                'label' => 'Viewer',
-                'direct' => 'viewer.home',
+                'name' => 'user',
+                'label' => 'Pengguna',
+                'direct' => 'user.dashboard'
             ],
-        ]);
+        ];
+
+        foreach ($roles as $role) {
+            Role::create($role);
+        }
     }
 }
