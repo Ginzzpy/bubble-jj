@@ -43,7 +43,6 @@
 
 @section('scripts')
     <script data-partial="1">
-        console.log('login script loaded');
         $("#form-login").on("submit", function(e) {
             e.preventDefault();
 
