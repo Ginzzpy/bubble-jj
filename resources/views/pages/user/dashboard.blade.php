@@ -31,7 +31,9 @@
                 </div>
             </div>
             <div class="card-footer">
-                <button type="button" id="edit_btn" class="btn btn-primary w-100">Edit akun</button>
+                <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#confirmPasswordModal">
+                    Edit akun
+                </button>
             </div>
         </div>
     </div>

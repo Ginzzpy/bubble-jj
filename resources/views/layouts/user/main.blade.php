@@ -78,6 +78,41 @@
 
     <div id="responsive-overlay"></div>
 
+    <div class="modal fade" id="confirmPasswordModal" tabindex="-1" data-bs-backdrop="static" aria-labelledby="confirmPasswordModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <form action="" method="POST">
+                    @csrf
+                    @method('POST')
+
+                    <div class="modal-header">
+                        <h5 class="modal-title">Konfirmasi Kepemilikan Akun</h5>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Password</label>
+                            <div class="input-group">
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Masukkan password kamu"
+                                    value="{{ old('password') }}">
+                                <button class="btn btn-light" type="button" onclick="togglePassword('password')">
+                                    <i class='fa fa-eye'></i>
+                                </button>
+                            </div>
+                        </div>
+                        @error('password')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="modal-footer p-2">
+                        <button type="button" class="btn btn-ghost" data-bs-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-primary">Verifikasi</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
         @csrf
         @method('POST')
